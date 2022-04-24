@@ -4,4 +4,5 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Check Maven Version
       - run: mvn -v
