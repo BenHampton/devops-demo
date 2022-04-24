@@ -23,13 +23,13 @@ class TestServiceTest {
     @Test
     void getTestMessage_simulateFailure() {
         String result = underTest.getTestMessage();
-        assertEquals("FAILING_PURPOSELY", result);
+        assertEquals(result, "FAILING_PURPOSELY" );
     }
 
     @Test
     void getTestGreetingMessage() {
         String name = "testName";
         String result = underTest.getTestGreetingMessage(name);
-        assertEquals("Welcome to the world " + name, result);
+        assertEquals(result, "Welcome to the world " + name);
     }
 }
