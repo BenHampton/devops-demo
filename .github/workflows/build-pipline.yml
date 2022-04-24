@@ -11,7 +11,7 @@ jobs:
         with:
           name: my-api-artifact
       - name: Archive JAR
-        uses: thedoctore0/zip-release@master
+        uses: thedoctor0/zip-release@master
         with:
           filename: api-application.zip
       - name: Create Githun Release
