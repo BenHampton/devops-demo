@@ -1,6 +1,26 @@
 name: Build and release Devops application
 on: push
 jobs:
+  build-project:
+    name: Build Api Devops application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: "1.8"
+      - name: Check Maven Version
+        run: mvn -v
+      - name: Build with Maven
+        run: mvn -B -U package
+      - name: Upload JAR
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-api-artifact
+          path: target/devops-0.0.1-SNAPSHOT.jar
+
   release-project:
     name: release JAR to Githun Releases
     runs-on: ubuntu-latest
@@ -31,23 +51,4 @@ jobs:
           asset_path: ./api-application.zip
           asset_name: api-application-v${{ github.run_number }}.zip
           asset_content_type: application/zip
-  build-project:
-    name: Build Api Devops application
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-      - name: Set up JDK
-        uses: actions/setup-java@v1
-        with:
-          java-version: "1.8"
-      - name: Check Maven Version
-        run: mvn -v
-      - name: Build with Maven
-        run: mvn -B -U package
-      - name: Upload JAR
-        uses: actions/upload-artifact@v3
-        with:
-          name: my-api-artifact
-          path: target/devops-0.0.1-SNAPSHOT.jar
 

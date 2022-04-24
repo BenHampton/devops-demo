@@ -13,18 +13,18 @@ class TestServiceTest {
     @InjectMocks
     TestService underTest;
 
-    @Test
-    void getTestMessage() {
-        String result = underTest.getTestMessage();
-        assertEquals("Hello World", result);
-    }
-
-
 //    @Test
-//    void getTestMessage_simulateFailure() {
+//    void getTestMessage() {
 //        String result = underTest.getTestMessage();
-//        assertEquals("FAILING_PURPOSELY", result);
+//        assertEquals("Hello World", result);
 //    }
+
+
+    @Test
+    void getTestMessage_simulateFailure() {
+        String result = underTest.getTestMessage();
+        assertEquals("FAILING_PURPOSELY", result);
+    }
 
     @Test
     void getTestGreetingMessage() {
