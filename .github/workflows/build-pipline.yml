@@ -1,0 +1,7 @@
+name: devops workflow for demo project
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: mvn -v
