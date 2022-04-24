@@ -3,7 +3,7 @@ on: push
 jobs:
   release-project:
     name: release JAR to Githun Releases
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     needs: build-project
     steps:
       - name: Download JAR
