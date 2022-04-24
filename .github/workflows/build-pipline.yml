@@ -14,5 +14,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: my-api-artifact
-            path: target/*.jar
+            path: /target/*.jar
 
