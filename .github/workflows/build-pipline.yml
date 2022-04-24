@@ -1,6 +1,36 @@
 name: Build and release Devops application
 on: push
 jobs:
+  release-project:
+    name: release JAR to Githun Releases
+    run-on: ubuntu-latest
+    needs: build-project
+    steps:
+      - name: Download JAR
+        uses: actions/download-artifact@v3
+        with:
+          name: my-api-artifact
+      - name: Archive JAR
+        uses: thedoctore0/zip-release@master
+        with:
+          filename: api-application.zip
+      - name: Create Githun Release
+        id: create-new-release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: Release V${{ github.run_number }}
+      - name: Upload asset to Github Release
+          uses: actions.upload-release-asset@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            upload: {{ create-new-release.outputs.upload_url }}
+            asset_path: ./api-application.zip
+            asset_name: api-application-v${{ github.run_number }}.zip
+            asset_content_type: application/zip
   build-project:
     name: Build Api Devops application
     runs-on: ubuntu-latest
