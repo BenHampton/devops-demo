@@ -12,5 +12,5 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: latest, ${{ github.run_number }}
+          labels: latest, ${{ github.run_number }}
