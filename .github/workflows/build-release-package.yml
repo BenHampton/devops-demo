@@ -1,24 +1,18 @@
-#name: Dockerize devops-demo application
-#on: push
-#jobs:
-#  build-container:
-#    name: Build Docker container image
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout Code
-#        uses: actions/checkout@v2
-#      - name: Publish to Github Packages
-#        uses: docker/build-push-action@v1
-#        with:
-#          username: ${{ github.actor }}
-#          password: ${{ secrets.GITHUB_TOKEN }}
-#          registry: docker.pgk.github.com
-#          repository: ${{ github.repository }}/devops-demo
-#          tags: latest, ${{ github.run_number }}
-#      - name: Publish to Docker Hub
-#        uses: docker/build-push-action@v2
-#        with:
-#          username: ${{ github.DOCKER_USERNAME }}
-#          password: ${{ secrets.DOCKER_PASSWORD }}
-#          repository: bhampton29/devops-project
-#          tags: latest, ${{ github.run_number }}
+name: Dockerize devops-demo application
+on: push
+jobs:
+  build-container:
+    name: Build Docker container image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Publish to Github Packages
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pgk.github.com
+          repository: ${{ github.repository }}/devops-demo
+          tags: latest, ${{ github.run_number }}
+
