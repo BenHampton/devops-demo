@@ -10,17 +10,11 @@ jobs:
       - name: Publish to Github Packages
         uses: docker/build-push-action@v2
         with:
-          context: .
-          push: true
-          tags: |
-            ghcr.io/${{ github.repository }}:${{ github.ref }}
-            ghcr.io/${{ github.repository }}:latest
-
-#          username: ${{ github.actor }}
-#          password: ${{ secrets.GITHUB_TOKEN }}
-#          registry: docker.pgk.github.com
-#          repository: ${{ github.repository }}/devops-demo
-#          tags: latest, ${{ github.run_number }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pgk.github.com
+          repository: ${{ github.repository }}/devops-demo
+          tags: latest, ${{ github.run_number }}
 #      - name: Publish to Docker Hub
 #        uses: docker/build-push-action@v2
 #        with:
