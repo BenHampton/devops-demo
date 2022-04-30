@@ -10,9 +10,7 @@ jobs:
       - name: Publish to Github Packages
         uses: docker/build-push-action@v1
         with:
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pgk.github.com
-          repository: ${{ github.repository }}/devops-demo
-          tags: latest, ${{ github.run_number }}
-
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
