@@ -15,7 +15,7 @@ jobs:
         name: Build & push Docker image
       - uses: mr-smithers-excellent/docker-build-push@v5
         with:
-          image: image-name
+          image: test/devops-demo
           registry: ghcr.io
           tag: latest, ${{ github.run_number }}
 #            githubOrg: override-org # optional
