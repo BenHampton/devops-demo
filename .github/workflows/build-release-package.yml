@@ -24,4 +24,3 @@ jobs:
           githubOrg: override-org # optional
           username: ${{ secrets.GHCR_USERNAME }}
           password: ${{ secrets.GHCR_TOKEN }}
-          tag: latest, ${{ github.run_number }}
