@@ -20,9 +20,10 @@ jobs:
         name: Build & push Docker image
       - uses: mr-smithers-excellent/docker-build-push@v5
         with:
-          image: test/devops-demo
-          registry: ghcr.io
+          image: docker.pgk.github.com
+#          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pgk.github.com
+          repository: ${{ github.repository }}/devops-demo
           tag: latest, ${{ github.run_number }}
-#            githubOrg: override-org # optional
-          username: ${{ secrets.GHCR_USERNAME }}
-          password: ${{ secrets.GHCR_TOKEN }}
