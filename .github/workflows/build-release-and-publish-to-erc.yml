@@ -5,7 +5,7 @@ on:
       - main
 jobs:
 
-  build: Build image
+  build:
     name: Build image
     runs-on: ubuntu-latest
 
